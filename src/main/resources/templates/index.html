@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/main/resources/templates/css/style.css">
+    <title>Biblioteca Digital</title>
+</head>
+<body>
+
+<header>
+    <h1>Biblioteca Digital</h1>
+    <nav>
+        <a href="#catalogo" onclick="showSection('catalogo')">Catálogo</a>
+        <a href="#pesquisarLivro" onclick="showSection('pesquisarLivro')">Pesquisar</a>
+        <a href="#novoLivro" onclick="showSection('novoLivro')">Novo Livro</a>
+        <a href="#editarLivro" onclick="showSection('editarLivro')">Editar Livro</a>
+        <a href="#excluirLivro" onclick="showSection('excluirLivro')">Excluir Livro</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <div id="home" class="slider-container">
+        <h2>📚 Destaques da Biblioteca</h2>
+        <div id="slider" class="slider-container">
+            <!-- Slider dos livros aparece aqui dinamicamente -->
+        </div>
+    </div>
+
+
+    <!-- Catálogo -->
+    <div id="catalogo" class="catalogo hidden">
+        <!-- Cards dos livros aparecem aqui dinamicamente -->
+    </div>
+
+
+    <!-- Pesquisar -->
+    <div id="pesquisarLivro" class="hidden">
+        <h2>Pesquisar Livro</h2>
+        <form>
+        <input type="text" id="inputPesquisa" placeholder="Digite título, autor ou editora">
+        <button onclick="pesquisarLivro()">Pesquisar</button>
+        </form>
+        <div id="resultadoPesquisa"></div>
+    </div>
+
+    <!-- Novo Livro -->
+    <div id="novoLivro" class="hidden">
+        <h2>Adicionar Novo Livro</h2>
+        <form id="formNovoLivro">
+            <input type="text" id="titulo" placeholder="Título" required>
+            <input type="text" id="autor" placeholder="Autor" required>
+            <input type="text" id="editora" placeholder="Editora" required>
+            <input type="number" id="ano" placeholder="Ano de Publicação" required>
+            <input type="text" id="capa" placeholder="URL da Capa" required>
+            <textarea id="descricao" placeholder="Descrição do livro" required></textarea>
+            <button type="submit">Adicionar Livro</button>
+        </form>
+    </div>
+
+    <!-- Editar Livro -->
+    <div id="editarLivro" class="hidden">
+        <h2>Editar Livro</h2>
+        <form id="formEditarLivro">
+            <input type="number" id="editId" placeholder="ID do Livro" required>
+            <input type="text" id="editTitulo" placeholder="Novo Título">
+            <input type="text" id="editAutor" placeholder="Novo Autor">
+            <input type="text" id="editoraEdit" placeholder="Nova Editora">
+            <input type="number" id="editAno" placeholder="Novo Ano">
+            <input type="text" id="editCapa" placeholder="Nova URL da Capa">
+            <textarea id="editDescricao" placeholder="Nova Descrição"></textarea>
+            <button type="submit">Editar Livro</button>
+        </form>
+    </div>
+
+    <!-- Excluir Livro -->
+    <div id="excluirLivro" class="hidden">
+        <h2>Excluir Livro</h2>
+        <form id="formExcluirLivro">
+            <input type="number" id="excluirId" placeholder="ID do Livro" required>
+            <button type="submit">Excluir Livro</button>
+        </form>
+    </div>
+
+</div>
+
+<div id="detalhesModal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-button" onclick="fecharModal()">&times;</span>
+        <img id="modalCapa" src="" alt="Capa do livro">
+        <h2 id="modalTitulo"></h2>
+        <p><strong>Id:</strong> <span id="modalId"></span></p>
+        <p><strong>Autor:</strong> <span id="modalAutor"></span></p>
+        <p><strong>Editora:</strong> <span id="modalEditora"></span></p>
+        <p><strong>Ano:</strong> <span id="modalAno"></span></p>
+        <p><strong>Descrição:</strong></p>
+        <p id="modalDescricao"></p>
+    </div>
+</div>
+
+<script src="/src/main/resources/templates/js/script.js"></script>
+
+</body>
+</html>

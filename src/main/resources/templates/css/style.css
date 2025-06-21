@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+}
+
+/* Cabeçalho e Menu */
+header {
+    background-color: #003366;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+header h1 {
+    font-size: 24px;
+}
+nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+}
+nav a:hover {
+    background-color: #0059b3;
+}
+
+/* Container geral */
+.container {
+    padding: 20px;
+}
+.hidden {
+    display: none;
+}
+
+
+/* 🔵 Slider */
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+}
+
+#slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 100%;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+}
+
+.slide img {
+    width: auto;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.slide h2 {
+    margin-top: 15px;
+    font-size: 22px;
+    color: #333;
+}
+
+/* Esconde slides não ativos (mas é opcional porque usamos left no JS) */
+.slide:not(.active) {
+    left: 100%;
+}
+
+.destaque-container {
+    text-align: center;
+    margin: 30px auto;
+}
+
+.livro-card {
+    display: inline-block;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.5s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.livro-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.livro-card h3 {
+    margin: 10px 0 5px;
+}
+
+.livro-card p {
+    margin: 5px 0;
+}
+
+/* Cards dos livros */
+.catalogo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 10%;
+}
+.card {
+    background: white;
+    width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 10px;
+    text-align: center;
+    margin-top: 5%;
+}
+.card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.card h3 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+.card button {
+    background-color: #003366;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.card button:hover {
+    background-color: #0059b3;
+}
+
+/* Formulários */
+form {
+    background: white;
+    padding: 20px;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+form input,
+form button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+form button {
+    background-color: #003366;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+form button:hover {
+    background-color: #0059b3;
+}
+
+/* Modal - Fundo */
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+
+/* Modal escondido */
+.modal.hidden {
+    display: none;
+}
+
+/* Conteúdo do Modal */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+    height: 80%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    text-align: center;
+}
+
+/* Botão Fechar */
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: black;
+}
+
+/* Capa */
+.modal-content img {
+    max-width: 70%;
+    height: 60%;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
