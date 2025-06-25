@@ -1,4 +1,4 @@
-// 🧠 Navegação entre seções
+// Navegação entre seções
 function showSection(sectionId) {
     document.querySelectorAll('.container > div').forEach(div => {
         div.classList.add('hidden');
@@ -13,7 +13,7 @@ function showSection(sectionId) {
     }
 }
 
-// 🔄 Carregar livros no catálogo
+// Carregar livros no catálogo
 function carregarLivros() {
     const catalogo = document.getElementById('catalogo');
     catalogo.innerHTML = '';
@@ -35,7 +35,7 @@ function carregarLivros() {
         .catch(error => console.error('Erro ao carregar livros:', error));
 }
 
-// 🔄 Carregar Slider na Home
+// Carregar Slider na Home
 function carregarSlider() {
     const slider = document.getElementById('slider');
     slider.innerHTML = '';
@@ -60,7 +60,7 @@ function carregarSlider() {
         .catch(error => console.error('Erro ao carregar slider:', error));
 }
 
-// ▶️ Função para iniciar o slider
+// Função para iniciar o slider
 function iniciarSlider() {
     const slides = document.querySelectorAll('.slide');
     let index = 0;
@@ -84,7 +84,7 @@ function iniciarSlider() {
     }, 3000);
 }
 
-// 🔍 Mostrar detalhes
+// Mostrar detalhes
 function mostrarDetalhes(id, titulo, autor, editora, ano, capa, descricao) {
     document.getElementById('modalCapa').src = capa;
     document.getElementById('modalTitulo').innerText = titulo;
@@ -103,7 +103,7 @@ function fecharModal() {
 }
 
 
-// 🟩 Adicionar novo livro
+// Adicionar novo livro
 document.getElementById('formNovoLivro').addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -123,16 +123,16 @@ document.getElementById('formNovoLivro').addEventListener('submit', function (e)
     })
     .then(response => {
         if (response.ok) {
-            alert('✅ Livro adicionado com sucesso!');
+            alert('Livro adicionado com sucesso!');
             this.reset();
             carregarLivros();
         } else {
-            alert('❌ Erro ao adicionar livro!');
+            alert('Erro ao adicionar livro!');
         }
     });
 });
 
-// 🟨 Editar livro
+// Editar livro
 document.getElementById('formEditarLivro').addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -154,16 +154,16 @@ document.getElementById('formEditarLivro').addEventListener('submit', function (
     })
     .then(response => {
         if (response.ok) {
-            alert('✅ Livro editado com sucesso!');
+            alert('Livro editado com sucesso!');
             this.reset();
             carregarLivros();
         } else {
-            alert('❌ Erro ao editar livro!');
+            alert('Erro ao editar livro!');
         }
     });
 });
 
-// 🟥 Excluir livro
+// Excluir livro
 document.getElementById('formExcluirLivro').addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -174,21 +174,21 @@ document.getElementById('formExcluirLivro').addEventListener('submit', function 
     })
     .then(response => {
         if (response.ok) {
-            alert('✅ Livro excluído com sucesso!');
+            alert('Livro excluído com sucesso!');
             this.reset();
             carregarLivros();
         } else {
-            alert('❌ Erro ao excluir livro!');
+            alert('Erro ao excluir livro!');
         }
     });
 });
 
-// 🔎 Pesquisar livro
+// Pesquisar livro
 function pesquisarLivro() {
     const termo = document.getElementById('inputPesquisa').value;
     const resultadoDiv = document.getElementById('resultadoPesquisa');
 
-    resultadoDiv.innerHTML = '🔍 Buscando...';
+    resultadoDiv.innerHTML = 'Buscando...';
 
     fetch(`http://localhost:8080/api/livros/buscar?termo=${encodeURIComponent(termo)}`)
     .then(response => response.json())
@@ -196,7 +196,7 @@ function pesquisarLivro() {
             resultadoDiv.innerHTML = '';
 
             if (livros.length === 0) {
-                resultadoDiv.innerHTML = '<p>❌ Nenhum livro encontrado.</p>';
+                resultadoDiv.innerHTML = '<p>Nenhum livro encontrado.</p>';
                 return;
             }
 
@@ -216,9 +216,9 @@ function pesquisarLivro() {
         })
         .catch(error => {
             console.error('Erro na pesquisa:', error);
-            resultadoDiv.innerHTML = '<p>⚠️ Erro ao realizar pesquisa.</p>';
+            resultadoDiv.innerHTML = '<p>Erro ao realizar pesquisa.</p>';
         });
 }
 
-// 🚀 Carrega o slider na Home automaticamente
+// Carrega o slider na Home automaticamente
 showSection('home');
